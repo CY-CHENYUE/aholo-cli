@@ -1,0 +1,451 @@
+{
+  "source": "https://labs.aholo3d.cn/api-docs/specifications/services/asset/openapi.json",
+  "sourceSha256": "63a53c7370d858cde7d24194c783382d965c19b3c705179d8aa61ab2bfbd7eb8",
+  "specVersion": "1.0",
+  "uploadStates": {
+    "pending": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      7
+    ],
+    "success": [
+      5
+    ],
+    "failure": [
+      6,
+      8
+    ]
+  },
+  "operations": {
+    "getUploadToken": {
+      "path": "/asset/v1/token",
+      "method": "GET",
+      "parameters": [],
+      "requestBody": {},
+      "successResponse": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ousToken": {
+                  "type": "string"
+                },
+                "globalDomain": {
+                  "type": "string"
+                },
+                "blockSize": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ousCosSingleUpload": {
+      "path": "/ous/api/v2/single/upload",
+      "method": "POST",
+      "parameters": [],
+      "requestBody": {
+        "content": {
+          "multipart/form-data": {
+            "schema": {
+              "required": [
+                "file",
+                "md5"
+              ],
+              "type": "object",
+              "properties": {
+                "md5": {
+                  "type": "string"
+                },
+                "file": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            },
+            "encoding": {
+              "file": {
+                "contentType": "application/octet-stream"
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "successResponse": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "c",
+                "d"
+              ],
+              "type": "object",
+              "properties": {
+                "c": {
+                  "type": "string"
+                },
+                "m": {
+                  "type": "string"
+                },
+                "d": {
+                  "required": [
+                    "taskId"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "taskId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ousCosBlockUploadInit": {
+      "path": "/ous/api/v2/block/upload/init",
+      "method": "POST",
+      "parameters": [
+        {
+          "name": "md5",
+          "in": "query",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "blocks",
+          "in": "query",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        {
+          "name": "size",
+          "in": "query",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        {
+          "name": "name",
+          "in": "query",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "metadata",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "customPrefix",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "customFilename",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "requestBody": {},
+      "successResponse": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "c",
+                "d"
+              ],
+              "type": "object",
+              "properties": {
+                "c": {
+                  "type": "string"
+                },
+                "m": {
+                  "type": "string"
+                },
+                "d": {
+                  "required": [
+                    "taskId"
+                  ],
+                  "type": "object",
+                  "properties": {
+                    "taskId": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "lackBlocks": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "progress": {
+                      "type": "number",
+                      "format": "double",
+                      "nullable": true
+                    },
+                    "deduplicated": {
+                      "type": "boolean",
+                      "nullable": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ousCosBlockUploadPart": {
+      "path": "/ous/api/v2/block/upload/part",
+      "method": "POST",
+      "parameters": [],
+      "requestBody": {
+        "content": {
+          "multipart/form-data": {
+            "schema": {
+              "required": [
+                "block",
+                "file"
+              ],
+              "type": "object",
+              "properties": {
+                "block": {
+                  "minimum": 1,
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "file": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            },
+            "encoding": {
+              "file": {
+                "contentType": "application/octet-stream"
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "successResponse": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "c",
+                "d"
+              ],
+              "type": "object",
+              "properties": {
+                "c": {
+                  "type": "string"
+                },
+                "m": {
+                  "type": "string"
+                },
+                "d": {
+                  "nullable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ousCosUploadStatus": {
+      "path": "/ous/api/v2/upload/status",
+      "method": "GET",
+      "parameters": [],
+      "requestBody": {},
+      "successResponse": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "c",
+                "d"
+              ],
+              "type": "object",
+              "properties": {
+                "c": {
+                  "type": "string"
+                },
+                "m": {
+                  "type": "string"
+                },
+                "d": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "integer",
+                          "format": "int32",
+                          "enum": [
+                            0,
+                            1,
+                            2,
+                            3,
+                            4,
+                            5,
+                            6,
+                            7,
+                            8
+                          ]
+                        },
+                        "uploadKey": {
+                          "type": "string"
+                        },
+                        "url": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "md5": {
+                          "type": "string"
+                        },
+                        "obsTaskId": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "obsTaskId": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "integer",
+                          "format": "int32",
+                          "enum": [
+                            0,
+                            1,
+                            2,
+                            3,
+                            4,
+                            5,
+                            6,
+                            7,
+                            8
+                          ]
+                        },
+                        "uploadKey": {
+                          "type": "string"
+                        },
+                        "url": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "md5": {
+                          "type": "string"
+                        },
+                        "errorCode": {
+                          "nullable": true,
+                          "allOf": [
+                            {
+                              "type": "integer",
+                              "format": "int32",
+                              "enum": [
+                                1,
+                                2,
+                                3,
+                                4,
+                                5,
+                                6,
+                                7,
+                                8,
+                                9,
+                                10,
+                                11,
+                                12,
+                                13
+                              ]
+                            }
+                          ]
+                        },
+                        "errorMsg": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "blockUpload": {
+                          "type": "object",
+                          "properties": {
+                            "obsId": {
+                              "type": "string"
+                            },
+                            "status": {
+                              "type": "integer",
+                              "format": "int32",
+                              "enum": [
+                                0,
+                                1,
+                                2,
+                                3,
+                                4,
+                                5,
+                                6,
+                                7,
+                                8
+                              ]
+                            },
+                            "progressPercent": {
+                              "type": "integer",
+                              "format": "int32"
+                            },
+                            "lackBlocks": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "errorInfo": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

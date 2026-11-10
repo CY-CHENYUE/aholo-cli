@@ -1,0 +1,492 @@
+{
+  "source": "https://labs.aholo3d.cn/api-docs/specifications/services/lux3d/openapi.json",
+  "sourceSha256": "e5ec86d623e02cc6cddf161743af1100ce1a9c4e2ac26e33cba59d1ecd2e9293",
+  "specVersion": "2.0",
+  "operations": {
+    "createMultimodalToImageTask": {
+      "path": "/lux3d/v1/generate/multimodal-to-image/task/create",
+      "method": "POST",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "img": {
+            "minLength": 1,
+            "pattern": ".*\\S.*",
+            "type": "string"
+          },
+          "prompt": {
+            "minLength": 1,
+            "pattern": ".*\\S.*",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "createImageToFourViewTask": {
+      "path": "/lux3d/v1/generate/image-to-four-view/task/create",
+      "method": "POST",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "img": {
+            "minLength": 1,
+            "pattern": ".*\\S.*",
+            "type": "string"
+          },
+          "prompt": {
+            "minLength": 1,
+            "pattern": ".*\\S.*",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "createImgTo3dTask": {
+      "path": "/lux3d/v1/generate/img-to-3d/task/create",
+      "method": "POST",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "img": {
+            "minLength": 1,
+            "pattern": ".*\\S.*",
+            "type": "string"
+          },
+          "imgs": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 32,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": ".*\\S.*"
+            }
+          },
+          "version": {
+            "type": "string",
+            "enum": [
+              "G1",
+              "G1-Turbo"
+            ]
+          },
+          "faceCount": {
+            "type": "integer",
+            "minimum": 10000,
+            "maximum": 300000
+          },
+          "outputFormat": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "zip",
+                "glb",
+                "ply"
+              ]
+            }
+          },
+          "enablePbr": {
+            "type": "boolean"
+          },
+          "aiPredictSize": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "createTextTo3dTask": {
+      "path": "/lux3d/v1/generate/text-to-3d/task/create",
+      "method": "POST",
+      "schema": {
+        "required": [
+          "prompt"
+        ],
+        "type": "object",
+        "properties": {
+          "prompt": {
+            "minLength": 1,
+            "pattern": ".*\\S.*",
+            "type": "string"
+          },
+          "style": {
+            "type": "string",
+            "enum": [
+              "photorealistic",
+              "cartoon",
+              "anime",
+              "hand_painted",
+              "cyberpunk",
+              "fantasy",
+              "glass"
+            ]
+          },
+          "img": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string",
+            "enum": [
+              "G1",
+              "G1-Turbo"
+            ]
+          },
+          "faceCount": {
+            "type": "integer",
+            "minimum": 10000,
+            "maximum": 300000
+          },
+          "outputFormat": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "zip",
+                "glb",
+                "ply"
+              ]
+            }
+          },
+          "enablePbr": {
+            "type": "boolean"
+          },
+          "aiPredictSize": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "createMaterialTransferTask": {
+      "path": "/lux3d/v1/generate/material-transfer/task/create",
+      "method": "POST",
+      "schema": {
+        "required": [
+          "img",
+          "meshUrl",
+          "version"
+        ],
+        "type": "object",
+        "properties": {
+          "img": {
+            "minLength": 1,
+            "pattern": ".*\\S.*",
+            "type": "string"
+          },
+          "meshUrl": {
+            "minLength": 1,
+            "pattern": ".*\\S.*",
+            "type": "string"
+          },
+          "version": {
+            "type": "string",
+            "enum": [
+              "v3.0-standard"
+            ]
+          },
+          "outputFormat": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "zip",
+                "glb",
+                "usdz",
+                "obj_zip",
+                "fbx_zip"
+              ]
+            }
+          },
+          "aiPredictSize": {
+            "type": "boolean"
+          },
+          "customSize": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "createPartSplitTask": {
+      "path": "/lux3d/v1/part-split/task/create",
+      "method": "POST",
+      "schema": {
+        "required": [
+          "glbUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "glbUrl": {
+            "minLength": 1,
+            "pattern": ".*\\S.*",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "createMultiFormatExportTask": {
+      "path": "/lux3d/v1/multi-format-export/task/create",
+      "method": "POST",
+      "schema": {
+        "required": [
+          "modelUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "modelUrl": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "outputFormat": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "usdz",
+                "obj_zip",
+                "fbx_zip",
+                "stl",
+                "3mf"
+              ]
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "createArticulationAnimationTask": {
+      "path": "/lux3d/v1/articulation-animation/task/create",
+      "method": "POST",
+      "schema": {
+        "type": "object",
+        "required": [
+          "glbUrl",
+          "prompt"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "glbUrl": {
+            "type": "string",
+            "format": "uri",
+            "minLength": 1
+          },
+          "prompt": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": ".*\\S.*"
+          }
+        }
+      }
+    },
+    "createHumanoidAutoRigTask": {
+      "path": "/lux3d/v1/animations/rig/task/create",
+      "method": "POST",
+      "schema": {
+        "type": "object",
+        "required": [
+          "modelUrl"
+        ],
+        "properties": {
+          "modelUrl": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "createHumanoidAnimationRetargetTask": {
+      "path": "/lux3d/v1/animations/retarget/task/create",
+      "method": "POST",
+      "schema": {
+        "type": "object",
+        "required": [
+          "rigModelUrl",
+          "animationIds"
+        ],
+        "properties": {
+          "rigModelUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "animationIds": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 10,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "enum": [
+                "A_TPose",
+                "Dance_Loop",
+                "Idle_Rail_Call",
+                "Idle_TalkingPhone_Loop",
+                "Idle_Talking_Loop",
+                "Yes",
+                "Crouch_Idle_Loop",
+                "Idle_FoldArms_Loop",
+                "Idle_Lantern_Loop",
+                "Idle_Loop",
+                "Idle_No_Loop",
+                "Idle_Rail_Loop",
+                "Idle_Torch_Loop",
+                "ClimbUp_1m",
+                "Crouch_Fwd_Loop",
+                "Jog_Fwd_Loop",
+                "Sprint_Loop",
+                "Swim_Fwd_Loop",
+                "Swim_Idle_Loop",
+                "Walk_Formal_Loop",
+                "Walk_Loop",
+                "Jump_Land",
+                "Jump_Loop",
+                "Jump_Start",
+                "NinjaJump_Idle_Loop",
+                "NinjaJump_Land",
+                "NinjaJump_Start",
+                "Roll",
+                "Slide_Exit",
+                "Slide_Loop",
+                "Slide_Start",
+                "Sword_Attack",
+                "Sword_Block",
+                "Sword_Dash",
+                "Sword_Heavy_Combo",
+                "Sword_Idle",
+                "Sword_Regular_A",
+                "Sword_Regular_A_Rec",
+                "Sword_Regular_B",
+                "Sword_Regular_B_Rec",
+                "Sword_Regular_C",
+                "Sword_Regular_Combo",
+                "Idle_Shield_Break",
+                "Idle_Shield_Loop",
+                "Shield_Dash",
+                "Shield_OneShot",
+                "Melee_Hook",
+                "Melee_Hook_Rec",
+                "Punch_Cross",
+                "Punch_Jab",
+                "Pistol_Aim_Down",
+                "Pistol_Aim_Neutral",
+                "Pistol_Aim_Up",
+                "Pistol_Idle_Loop",
+                "Pistol_Reload",
+                "Pistol_Shoot",
+                "Spell_Simple_Enter",
+                "Spell_Simple_Exit",
+                "Spell_Simple_Idle_Loop",
+                "Spell_Simple_Shoot",
+                "Chest_Open",
+                "Consume",
+                "Driving_Loop",
+                "Farm_Harvest",
+                "Farm_PlantSeed",
+                "Farm_Watering",
+                "Fixing_Kneeling",
+                "Interact",
+                "OverhandThrow",
+                "PickUp_Table",
+                "Push_Loop",
+                "TreeChopping_Loop",
+                "Walk_Carry_Loop",
+                "LayToIdle",
+                "Sitting_Enter",
+                "Sitting_Exit",
+                "Sitting_Idle_Loop",
+                "Sitting_Talking_Loop",
+                "Death01",
+                "Hit_Chest",
+                "Hit_Head",
+                "Hit_Knockback",
+                "Zombie_Idle_Loop",
+                "Zombie_Scratch",
+                "Zombie_Walk_Fwd_Loop"
+              ]
+            }
+          },
+          "animationOutputMode": {
+            "type": "string",
+            "enum": [
+              "separate",
+              "combined"
+            ]
+          },
+          "outFormat": {
+            "type": "string",
+            "enum": [
+              "glb",
+              "fbx"
+            ]
+          },
+          "animateInPlace": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "getTask": {
+      "path": "/lux3d/v1/generate/task/get",
+      "method": "GET",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "taskid": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "taskid"
+        ]
+      }
+    },
+    "listTasks": {
+      "path": "/lux3d/v1/generate/task/list",
+      "method": "GET",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "pagesize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "status": {
+            "type": "integer",
+            "enum": [
+              0,
+              1,
+              3,
+              4
+            ]
+          },
+          "starttime": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "endtime": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": []
+      }
+    }
+  }
+}

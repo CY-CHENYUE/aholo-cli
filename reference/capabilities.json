@@ -1,0 +1,595 @@
+{
+  "cliVersion": "0.1.0",
+  "name": "@zaowuxia/aholo-cli",
+  "commands": [
+    {
+      "command": "asset upload",
+      "operationId": "asset.uploadFile",
+      "kind": "upload",
+      "implementation": "implemented"
+    },
+    {
+      "command": "lux3d image-to-3d",
+      "operationId": "createImgTo3dTask",
+      "kind": "create",
+      "implementation": "implemented"
+    },
+    {
+      "command": "lux3d text-to-3d",
+      "operationId": "createTextTo3dTask",
+      "kind": "create",
+      "implementation": "implemented"
+    },
+    {
+      "command": "lux3d image",
+      "operationId": "createMultimodalToImageTask",
+      "kind": "create",
+      "implementation": "implemented"
+    },
+    {
+      "command": "lux3d four-view",
+      "operationId": "createImageToFourViewTask",
+      "kind": "create",
+      "implementation": "implemented"
+    },
+    {
+      "command": "lux3d material-transfer",
+      "operationId": "createMaterialTransferTask",
+      "kind": "create",
+      "implementation": "implemented"
+    },
+    {
+      "command": "lux3d export",
+      "operationId": "createMultiFormatExportTask",
+      "kind": "create",
+      "implementation": "implemented"
+    },
+    {
+      "command": "lux3d split",
+      "operationId": "createPartSplitTask",
+      "kind": "create",
+      "implementation": "implemented"
+    },
+    {
+      "command": "lux3d articulate",
+      "operationId": "createArticulationAnimationTask",
+      "kind": "create",
+      "implementation": "implemented"
+    },
+    {
+      "command": "lux3d rig",
+      "operationId": "createHumanoidAutoRigTask",
+      "kind": "create",
+      "implementation": "implemented"
+    },
+    {
+      "command": "lux3d retarget",
+      "operationId": "createHumanoidAnimationRetargetTask",
+      "kind": "create",
+      "implementation": "implemented"
+    },
+    {
+      "command": "lux3d task get",
+      "operationId": "getTask",
+      "kind": "get",
+      "implementation": "implemented"
+    },
+    {
+      "command": "lux3d task list",
+      "operationId": "listTasks",
+      "kind": "list",
+      "implementation": "implemented"
+    },
+    {
+      "command": "lux3d task wait",
+      "operationId": "getTask",
+      "kind": "wait",
+      "implementation": "implemented"
+    },
+    {
+      "command": "lux3d task download",
+      "operationId": "getTask",
+      "kind": "download",
+      "implementation": "implemented"
+    },
+    {
+      "command": "request get",
+      "operationId": "local.request.get",
+      "kind": "support",
+      "implementation": "implemented"
+    },
+    {
+      "command": "request attach",
+      "operationId": "local.request.attach",
+      "kind": "support",
+      "implementation": "implemented"
+    },
+    {
+      "command": "config show",
+      "operationId": "local.config.show",
+      "kind": "support",
+      "implementation": "implemented"
+    },
+    {
+      "command": "config set",
+      "operationId": "local.config.set",
+      "kind": "support",
+      "implementation": "implemented"
+    },
+    {
+      "command": "config list",
+      "operationId": "local.config.list",
+      "kind": "support",
+      "implementation": "implemented"
+    },
+    {
+      "command": "doctor",
+      "operationId": "local.doctor",
+      "kind": "support",
+      "implementation": "implemented"
+    },
+    {
+      "command": "capabilities",
+      "operationId": "local.capabilities",
+      "kind": "support",
+      "implementation": "implemented"
+    },
+    {
+      "command": "skill export",
+      "operationId": "local.skill.export",
+      "kind": "support",
+      "implementation": "implemented"
+    }
+  ],
+  "verification": [
+    {
+      "command": "asset upload",
+      "documented": true,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "partial",
+        "date": "2026-11-10",
+        "verified": "Official single-file SDK upload within image-to-3d.",
+        "notRun": [
+          "Standalone upload command",
+          "Multipart upload on the live service"
+        ]
+      }
+    },
+    {
+      "command": "lux3d image-to-3d",
+      "documented": true,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "scope": "Two authorized G1-Turbo / GLB robot samples. File and geometry checks passed; visual quality was not reviewed."
+      }
+    },
+    {
+      "command": "lux3d text-to-3d",
+      "documented": true,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "scope": "Two authorized G1-Turbo / GLB robot samples. File and geometry checks passed; visual quality was not reviewed."
+      }
+    },
+    {
+      "command": "lux3d image",
+      "documented": true,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "not-run",
+        "reason": "This operation was not exercised in the current live validation."
+      }
+    },
+    {
+      "command": "lux3d four-view",
+      "documented": true,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "not-run",
+        "reason": "This operation was not exercised in the current live validation."
+      }
+    },
+    {
+      "command": "lux3d material-transfer",
+      "documented": true,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "not-run",
+        "reason": "This operation was not exercised in the current live validation."
+      }
+    },
+    {
+      "command": "lux3d export",
+      "documented": true,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "not-run",
+        "reason": "This operation was not exercised in the current live validation."
+      }
+    },
+    {
+      "command": "lux3d split",
+      "documented": true,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "not-run",
+        "reason": "This operation was not exercised in the current live validation."
+      }
+    },
+    {
+      "command": "lux3d articulate",
+      "documented": true,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "not-run",
+        "reason": "This operation was not exercised in the current live validation."
+      }
+    },
+    {
+      "command": "lux3d rig",
+      "documented": true,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "not-run",
+        "reason": "This operation was not exercised in the current live validation."
+      }
+    },
+    {
+      "command": "lux3d retarget",
+      "documented": true,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "not-run",
+        "reason": "This operation was not exercised in the current live validation."
+      }
+    },
+    {
+      "command": "lux3d task get",
+      "documented": true,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "scope": "Two authorized G1-Turbo / GLB robot samples. File and geometry checks passed; visual quality was not reviewed."
+      }
+    },
+    {
+      "command": "lux3d task list",
+      "documented": true,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "not-run",
+        "reason": "This operation was not exercised in the current live validation."
+      }
+    },
+    {
+      "command": "lux3d task wait",
+      "documented": true,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "scope": "Two authorized G1-Turbo / GLB robot samples. File and geometry checks passed; visual quality was not reviewed."
+      }
+    },
+    {
+      "command": "lux3d task download",
+      "documented": true,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "scope": "Two authorized G1-Turbo / GLB robot samples. File and geometry checks passed; visual quality was not reviewed."
+      }
+    },
+    {
+      "command": "request get",
+      "documented": false,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "command": "request attach",
+      "documented": false,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "command": "config show",
+      "documented": false,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "command": "config set",
+      "documented": false,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "command": "config list",
+      "documented": false,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "command": "doctor",
+      "documented": false,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "command": "capabilities",
+      "documented": false,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "command": "skill export",
+      "documented": false,
+      "implemented": true,
+      "simulated": {
+        "status": "passed",
+        "date": "2026-11-10",
+        "suite": "tests/cli.test.mjs",
+        "totalCases": 34
+      },
+      "live": {
+        "status": "not-applicable"
+      }
+    }
+  ],
+  "assetSpec": {
+    "source": "https://labs.aholo3d.cn/api-docs/specifications/services/asset/openapi.json",
+    "sourceSha256": "63a53c7370d858cde7d24194c783382d965c19b3c705179d8aa61ab2bfbd7eb8",
+    "specVersion": "1.0"
+  },
+  "globals": [
+    {
+      "flag": "--json",
+      "description": "Output one versioned JSON result"
+    },
+    {
+      "flag": "--output <mode>",
+      "description": "text or json",
+      "choices": [
+        "text",
+        "json"
+      ]
+    },
+    {
+      "flag": "--home <directory>",
+      "description": "Isolated CLI configuration and request directory"
+    },
+    {
+      "flag": "--profile <name>",
+      "description": "CLI profile name"
+    },
+    {
+      "flag": "--region <region>",
+      "description": "Official API region",
+      "choices": [
+        "cn",
+        "com"
+      ]
+    },
+    {
+      "flag": "--base-url <url>",
+      "description": "Override official gateway; loopback HTTP allowed for tests"
+    },
+    {
+      "flag": "--timeout <seconds>",
+      "description": "Per-operation timeout (default 60)",
+      "kind": "number"
+    },
+    {
+      "flag": "--poll-interval <seconds>",
+      "description": "Query interval (default 12)",
+      "kind": "number"
+    },
+    {
+      "flag": "--out-dir <directory>",
+      "description": "Download root (default ./aholo-output)"
+    },
+    {
+      "flag": "--dry-run",
+      "description": "Validate and describe the operation without network or state changes"
+    },
+    {
+      "flag": "--describe",
+      "description": "Describe the selected command without credentials or network"
+    },
+    {
+      "flag": "--quiet",
+      "description": "Suppress progress on stderr"
+    },
+    {
+      "flag": "--verbose",
+      "description": "Print operation names on stderr, never credentials"
+    }
+  ],
+  "specVersion": "2.0",
+  "source": "https://labs.aholo3d.cn/api-docs/specifications/services/lux3d/openapi.json",
+  "sourceSha256": "e5ec86d623e02cc6cddf161743af1100ce1a9c4e2ac26e33cba59d1ecd2e9293",
+  "dependencies": {
+    "@manycore/aholo-sdk-asset": "1.3.0",
+    "@manycore/aholo-sdk-core": "1.3.0",
+    "@manycore/aholo-sdk-lux3d": "1.9.0",
+    "ajv": "8.20.0",
+    "commander": "15.1.0"
+  },
+  "taskStates": {
+    "pending": [
+      0,
+      1
+    ],
+    "success": [
+      3
+    ],
+    "failure": [
+      4,
+      6
+    ]
+  },
+  "exitCodes": {
+    "success": 0,
+    "general": 1,
+    "argument": 2,
+    "pendingOrWaitTimeout": 3,
+    "uncertain": 4,
+    "officialFailure": 5,
+    "networkOrAuthOrDownload": 6,
+    "interrupted": 130
+  }
+}

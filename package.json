@@ -1,0 +1,49 @@
+{
+  "name": "@zaowuxia/aholo-cli",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Command-line access to official Aholo Asset and Lux3D APIs",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "bin": {
+    "aholo": "bin/aholo.mjs"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "schemas",
+    "skills",
+    "reference",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node dist/generate.js",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "check:generated": "node dist/generate.js --check",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "prepack": "npm run build"
+  },
+  "dependencies": {
+    "@manycore/aholo-sdk-asset": "1.3.0",
+    "@manycore/aholo-sdk-core": "1.3.0",
+    "@manycore/aholo-sdk-lux3d": "1.9.0",
+    "ajv": "8.20.0",
+    "commander": "15.1.0"
+  },
+  "devDependencies": {
+    "typescript": "7.0.2",
+    "@types/node": "22.19.15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CY-CHENYUE/aholo-cli.git"
+  },
+  "homepage": "https://github.com/CY-CHENYUE/aholo-cli#readme",
+  "bugs": {
+    "url": "https://github.com/CY-CHENYUE/aholo-cli/issues"
+  }
+}
